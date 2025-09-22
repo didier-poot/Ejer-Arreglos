@@ -13,7 +13,7 @@ las columnas son las ventas correspondientes por mes como los nombre de los mét
 * Si los datos son válidos, utiliza el método .index() para encontrar la posición (índice) de ese mes y departamento en sus respectivas listas.
 *  usa los índices para acceder a la posición correcta en el arreglo ventas y le suma la cantidad proporcionada. Por ejemplo, ventas[0][0] corresponde a "Enero" y "Ropa".
 
-"Buscar venta": se encarga de encontrar la cantidad de venta en el mes y departamento proporcionado, "elimirnar_venta" hace lo mismo que las anteriores solo que aqui se reemplaza la venta por "0".
+"Buscar venta": se encarga de encontrar la cantidad de venta en el mes y departamento proporcionado
 * se llama a "validar_datos"
 * Si los datos son válidos, encuentra los índices correspondientes del mes y el departamento.
 * Accede a la posición en el arreglo ventas y retorna el valor de la venta almacenada en esa celda.
