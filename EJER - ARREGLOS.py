@@ -5,33 +5,41 @@ ventas = [
     [0 for i in range(3)] for i in range(12)
 ]
 
-def insertar_venta(mes, departamento, cantidad):
+def validar_datos(mes, departamento):
     mes = mes.lower().replace(" ", "")
     departamento = departamento.lower().replace(" ", "")
     if mes in meses  and departamento in departamentos:
-        ventas[meses.index(mes)][departamentos.index(departamento)] = cantidad
-        print(f"venta inserada con exito")
+        return True
     else:
-        print("Mes o departamento inválido")
+        return False
+
+def insertar_venta(mes, departamento, cantidad):
+    if validar_datos(mes, departamento):
+        indice_mes = meses.index(mes.lower().replace(" ", ""))
+        indice_departamento = departamentos.index(departamento.lower().replace(" ", ""))
+        ventas[indice_mes][indice_departamento] += cantidad
+    else:
+        print("Datos invalidos")
 
 def buscar_venta(mes, departamento):
-    mes = mes.lower().replace(" ", "")
-    departamento = departamento.lower().replace(" ", "")
-    if mes in meses  and departamento in departamentos:
-        return f"la venta del mes {mes} para el departamento {departamento} es: {ventas[meses.index(mes)][departamentos.index(departamento)]}"
+    if validar_datos(mes, departamento):
+        indice_mes = meses.index(mes.lower().replace(" ", ""))
+        indice_departamento = departamentos.index(departamento.lower().replace(" ", ""))
+        return ventas[indice_mes][indice_departamento]
     else:
-        print("Mes o departamento inválido")
+        return "Datos invalidos"
         
 def eliminar_venta(mes, departamento):
-    mes = mes.lower().replace(" ", "")
-    departamento = departamento.lower().replace(" ", "")
-    if mes in meses  and departamento in departamentos:
-        ventas[meses.index(mes)][departamentos.index(departamento)] = 0
-        print("Venta eliminada con exito")
+    if validar_datos(mes, departamento):
+        indice_mes = meses.index(mes.lower().replace(" ", ""))
+        indice_departamento = departamentos.index(departamento.lower().replace(" ", ""))
+        ventas[indice_mes][indice_departamento] = 0
     else:
-        print("Mes o departamento inválido")
+        print("Datos invalidos")
         
 # pruebas:
-# insertar_venta("Enero", "Ropa", 1500)
-# print(buscar_venta("Enero", "Ropa"))
-# print(ventas)
+insertar_venta("Enero", "Ropa", 1500)
+insertar_venta("Enero", "Deportes", 2000)
+insertar_venta("Febrero", "Jugueteria", 3000)
+print(buscar_venta("Enero", "Ropa"))
+print(ventas)
